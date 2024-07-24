@@ -32,6 +32,18 @@ import {
   CategoryList,
   CategoryShow,
 } from "./pages/categories";
+import {
+  ProfessorCreate,
+  ProfessorEdit,
+  ProfessorList,
+  ProfessorShow,
+} from "./pages/professores";
+import {
+  ProducoesCreate,
+  ProducoesEdit,
+  ProducoesList,
+  ProducoesShow,
+} from "./pages/producoes";
 
 function App() {
   return (
@@ -66,6 +78,26 @@ function App() {
                       canDelete: true,
                     },
                   },
+                  {
+                    name: "professores",
+                    list: "/professores",
+                    create: "/professores/create",
+                    edit: "/professores/edit/:id",
+                    show: "/professores/show/:id",
+                    meta: {
+                      canDelete: true,
+                    },
+                  },
+                  {
+                    name: "producoes",
+                    list: "/producoes",
+                    create: "/producoes/create",
+                    edit: "/producoes/edit/:id",
+                    show: "/producoes/show/:id",
+                    meta: {
+                      canDelete: true,
+                    },
+                  },
                 ]}
                 options={{
                   syncWithLocation: true,
@@ -95,6 +127,18 @@ function App() {
                       <Route path="edit/:id" element={<BlogPostEdit />} />
                       <Route path="show/:id" element={<BlogPostShow />} />
                     </Route>
+                    <Route path="/professor">
+                      <Route index element={<ProfessorList />} />
+                      <Route path="create" element={<ProfessorCreate />} />
+                      <Route path="edit/:id" element={<ProfessorEdit />} />
+                      <Route path="show/:id" element={<ProfessorShow />} />
+                    </Route>
+                    <Route path="/producoes">
+                      <Route index element={<ProducoesList />} />
+                      <Route path="create" element={<ProducoesCreate />} />
+                      <Route path="edit/:id" element={<ProducoesEdit />} />
+                      <Route path="show/:id" element={<ProducoesShow />} />
+                    </Route>
                     <Route path="/categories">
                       <Route index element={<CategoryList />} />
                       <Route path="create" element={<CategoryCreate />} />
@@ -104,7 +148,6 @@ function App() {
                     <Route path="*" element={<ErrorComponent />} />
                   </Route>
                 </Routes>
-
                 <RefineKbar />
                 <UnsavedChangesNotifier />
                 <DocumentTitleHandler />
