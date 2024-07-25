@@ -1,0 +1,18 @@
+{
+
+    "professor": [
+        {
+            "id": 1,
+            "nome": "Matheus"
+        }
+    ],
+    "producoes": [
+        {
+            "id": 1,
+            "descricao": "qualquer coisa",
+            "sigla": "APS",
+            "evento-periodico": "artigo",
+            "qualis": "B"
+        }
+    ]
+}

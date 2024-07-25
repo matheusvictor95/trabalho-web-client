@@ -1,7 +1,7 @@
 import { GitHubBanner, Refine } from "@refinedev/core";
 import { DevtoolsPanel, DevtoolsProvider } from "@refinedev/devtools";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
-
+import jsonServerDataProvider from "@refinedev/simple-rest";
 import {
   ErrorComponent,
   ThemedLayoutV2,
@@ -46,9 +46,11 @@ import {
 } from "./pages/producoes";
 
 function App() {
+  const API_URL = "https://api.pecs.refine.dev";
+  const dataProvider = jsonServerDataProvider(API_URL);
   return (
     <BrowserRouter>
-      <GitHubBanner />
+      
       <RefineKbarProvider>
         <ColorModeContextProvider>
           <AntdApp>
@@ -56,7 +58,8 @@ function App() {
               <Refine
                 notificationProvider={useNotificationProvider}
                 routerProvider={routerBindings}
-                dataProvider={dataProvider("https://api.fake-rest.refine.dev")}
+                // dataProvider={dataProvider("https://api.fake-rest.refine.dev")}
+                dataProvider={dataProvider}
                 resources={[
                   {
                     name: "blog_posts",
