@@ -44,6 +44,7 @@ import {
   ProducoesList,
   ProducoesShow,
 } from "./pages/producoes";
+import { DashboardPage } from "./pages/dashboard";
 
 function App() {
   const API_URL = "https://api.pecs.refine.dev";
@@ -101,6 +102,7 @@ function App() {
                       canDelete: true,
                     },
                   },
+                  {name: "dashboard"}
                 ]}
                 options={{
                   syncWithLocation: true,
@@ -141,6 +143,10 @@ function App() {
                       <Route path="create" element={<ProducoesCreate />} />
                       <Route path="edit/:id" element={<ProducoesEdit />} />
                       <Route path="show/:id" element={<ProducoesShow />} />
+                    </Route>
+                    <Route path="/dashboard">
+                      <Route index element={<DashboardPage/>} />
+                      
                     </Route>
                     <Route path="/categories">
                       <Route index element={<CategoryList />} />
