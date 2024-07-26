@@ -1,17 +1,9 @@
 {
 
-    "professor": [
+    "professores": [
         {
             "id": 1,
-            "nome": "Matheus"
-        },
-        {
-            "id": 2,
-            "nome": "joão"
-        },
-        {
-            "id": 2,
-            "nome": "rodrigo"
+            "nome": "matheus"
         }
     ],
     "producoes": [

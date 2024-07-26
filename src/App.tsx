@@ -2,56 +2,28 @@ import { GitHubBanner, Refine } from "@refinedev/core";
 import { DevtoolsPanel, DevtoolsProvider } from "@refinedev/devtools";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 import jsonServerDataProvider from "@refinedev/simple-rest";
-import {
-  ErrorComponent,
-  ThemedLayoutV2,
-  ThemedSiderV2,
-  useNotificationProvider,
-} from "@refinedev/antd";
+import {ErrorComponent,ThemedLayoutV2,ThemedSiderV2,useNotificationProvider,} from "@refinedev/antd";
 import "@refinedev/antd/dist/reset.css";
-
-import routerBindings, {
-  DocumentTitleHandler,
-  NavigateToResource,
-  UnsavedChangesNotifier,
+import routerBindings, {DocumentTitleHandler,NavigateToResource,UnsavedChangesNotifier,
 } from "@refinedev/react-router-v6";
 import dataProvider from "@refinedev/simple-rest";
 import { App as AntdApp } from "antd";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import { Header } from "./components/header";
 import { ColorModeContextProvider } from "./contexts/color-mode";
-import {
-  BlogPostCreate,
-  BlogPostEdit,
-  BlogPostList,
-  BlogPostShow,
-} from "./pages/blog-posts";
-import {
-  CategoryCreate,
-  CategoryEdit,
-  CategoryList,
-  CategoryShow,
-} from "./pages/categories";
-import {
-  ProfessorCreate,
-  ProfessorEdit,
-  ProfessorList,
-  ProfessorShow,
-} from "./pages/professores";
-import {
-  ProducoesCreate,
-  ProducoesEdit,
-  ProducoesList,
-  ProducoesShow,
-} from "./pages/producoes";
+import {BlogPostCreate,BlogPostEdit,BlogPostList,BlogPostShow,} from "./pages/blog-posts";
+import {CategoryCreate,CategoryEdit,CategoryList,CategoryShow,} from "./pages/categories";
+import {ProfessorCreate,ProfessorEdit,ProfessorList,ProfessorShow,} from "./pages/professores";
+import {ProducoesCreate,ProducoesEdit,ProducoesList,ProducoesShow,} from "./pages/producoes";
 import { DashboardPage } from "./pages/dashboard";
+
+
 
 function App() {
   const API_URL = "https://api.pecs.refine.dev";
   const dataProvider = jsonServerDataProvider(API_URL);
   return (
     <BrowserRouter>
-      
       <RefineKbarProvider>
         <ColorModeContextProvider>
           <AntdApp>
@@ -62,6 +34,12 @@ function App() {
                 // dataProvider={dataProvider("https://api.fake-rest.refine.dev")}
                 dataProvider={dataProvider}
                 resources={[
+                  {name: "dashboard",
+                    list: "/dashboard",
+                    meta: {
+                      canDelete: true,
+                    },
+                  },
                   {
                     name: "blog_posts",
                     list: "/blog-posts",
@@ -102,7 +80,7 @@ function App() {
                       canDelete: true,
                     },
                   },
-                  {name: "dashboard"}
+                 
                 ]}
                 options={{
                   syncWithLocation: true,
@@ -132,7 +110,7 @@ function App() {
                       <Route path="edit/:id" element={<BlogPostEdit />} />
                       <Route path="show/:id" element={<BlogPostShow />} />
                     </Route>
-                    <Route path="/professor">
+                    <Route path="/professores">
                       <Route index element={<ProfessorList />} />
                       <Route path="create" element={<ProfessorCreate />} />
                       <Route path="edit/:id" element={<ProfessorEdit />} />

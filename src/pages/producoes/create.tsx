@@ -1,13 +1,31 @@
-import { Create, useForm, useSelect } from "@refinedev/antd";
+import { Create, useForm, } from "@refinedev/antd";
 import MDEditor from "@uiw/react-md-editor";
-import { Form, Input, Select } from "antd";
+import { Form, Input, notification } from "antd";
+import axios from "axios";
 
 export const ProducoesCreate = () => {
-  const { formProps, saveButtonProps } = useForm({});
+  const { formProps, saveButtonProps } = useForm({
+    onSubmit: async (values) => {
+      try {
+        // Envia os dados para o json-server
+        await axios.post("http://localhost:5000/producoes", values);
 
-  const { selectProps: categorySelectProps } = useSelect({
-    resource: "categories",
+        // Notifica o usuário de que os dados foram salvos com sucesso
+        notification.success({
+          message: "Sucesso",
+          description: "Produção criado com sucesso!",
+        });
+      } catch (error) {
+        // Notifica o usuário em caso de erro
+        notification.error({
+          message: "Erro",
+          description: "Ocorreu um erro ao salvar.",
+        });
+      }
+    },
   });
+
+
 
   return (
     <Create saveButtonProps={saveButtonProps}>
@@ -21,7 +39,8 @@ export const ProducoesCreate = () => {
             },
           ]}
         >
-          <Input />
+          <MDEditor data-color-mode="light" />
+          
         </Form.Item>
         <Form.Item
           label={"sigla"}
@@ -32,6 +51,7 @@ export const ProducoesCreate = () => {
             },
           ]}
         >
+           <Input />
         </Form.Item>
         <Form.Item
           label={"Evento Periodico"}
@@ -42,6 +62,7 @@ export const ProducoesCreate = () => {
             },
           ]}
         >
+          <Input />
         </Form.Item>
 
         <Form.Item
@@ -53,6 +74,7 @@ export const ProducoesCreate = () => {
             },
           ]}
         >
+          <Input />
         </Form.Item>
       </Form>
     </Create>
