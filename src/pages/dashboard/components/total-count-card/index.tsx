@@ -1,6 +1,5 @@
-import React, { type FC, type PropsWithChildren, Suspense } from "react";
-
-import { AuditOutlined, ShopOutlined, TeamOutlined } from "@ant-design/icons";
+import React, { useEffect, useState, FC, PropsWithChildren, Suspense } from "react";
+import { UserOutlined, ReadOutlined , TeamOutlined} from "@ant-design/icons";
 import type { AreaConfig } from "@ant-design/plots";
 import { Card, Skeleton } from "antd";
 
@@ -55,6 +54,14 @@ export const DashboardTotalCountCard: React.FC<{
     line: {
       color: primaryColor,
     },
+    point: {
+      size: 0, // Isto remove os pontos do gráfico
+      shape: 'circle',
+      style: {
+        fill: 'transparent',
+        stroke: 'transparent',
+      },
+    },
   };
 
   return (
@@ -104,7 +111,7 @@ export const DashboardTotalCountCard: React.FC<{
             totalCount
           )}
         </Text>
-        <Suspense>
+        <Suspense fallback={<Skeleton active />}>
           <Area {...config} />
         </Suspense>
       </div>
@@ -112,10 +119,7 @@ export const DashboardTotalCountCard: React.FC<{
   );
 };
 
-const IconWrapper: FC<PropsWithChildren<{ color: string }>> = ({
-  color,
-  children,
-}) => {
+const IconWrapper: FC<PropsWithChildren<{ color: string }>> = ({ color, children }) => {
   return (
     <div
       style={{
@@ -147,8 +151,7 @@ const variants: {
     secondaryColor: "#BAE0FF",
     icon: (
       <IconWrapper color="#E6F4FF">
-      
-        <ShopOutlined
+        <UserOutlined
           className="md"
           style={{
             color: "#1677FF",
@@ -156,35 +159,20 @@ const variants: {
         />
       </IconWrapper>
     ),
-    title: "Number of professor",
+    title: "Número de professores",
     data: [
-      {
-        index: "1",
-        value: 3500,
-      },
-      {
-        index: "2",
-        value: 2750,
-      },
-      {
-        index: "3",
-        value: 5000,
-      },
-      {
-        index: "4",
-        value: 4250,
-      },
-      {
-        index: "5",
-        value: 5000,
-      },
+      { index: "1", value: 3500 },
+      { index: "2", value: 2750 },
+      { index: "3", value: 5000 },
+      { index: "4", value: 4250 },
+      { index: "5", value: 5000 },
     ],
   },
   producoes: {
     primaryColor: "#52C41A",
     secondaryColor: "#D9F7BE",
     icon: (
-      <IconWrapper color="#F6FFED">
+      <ReadOutlined color="#F6FFED">
         
         <TeamOutlined
           className="md"
@@ -192,9 +180,9 @@ const variants: {
             color: "#52C41A",
           }}
         />
-      </IconWrapper>
+      </ReadOutlined>
     ),
-    title: "Number of producoes",
+    title: "número de Produções",
     data: [
       {
         index: "1",
@@ -223,3 +211,4 @@ const variants: {
     ],
   },
 };
+
