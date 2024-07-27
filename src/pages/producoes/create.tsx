@@ -1,6 +1,6 @@
-import { Create, useForm, } from "@refinedev/antd";
+import { Create, useForm, useSelect  } from "@refinedev/antd";
 import MDEditor from "@uiw/react-md-editor";
-import { Form, Input, notification } from "antd";
+import { Form, Input, notification, Select} from "antd";
 import axios from "axios";
 
 export const ProducoesCreate = () => {
@@ -25,7 +25,9 @@ export const ProducoesCreate = () => {
     },
   });
 
-
+  const { selectProps: professorSelectProps } = useSelect({
+    resource: "professores",
+  });
 
   return (
     <Create saveButtonProps={saveButtonProps}>
@@ -66,16 +68,41 @@ export const ProducoesCreate = () => {
         </Form.Item>
 
         <Form.Item
-          label={"qualis"}
+          label={"Qualis"}
           name={["qualis"]}
+          initialValue={"A1"}
           rules={[
             {
               required: true,
             },
           ]}
         >
-          <Input />
+          <Select
+            defaultValue={"A1"}
+            options={[
+              { value: "A1", label: "A1" },
+              { value: "A2", label: "A2" },
+              { value: "B1", label: "B1" },
+              { value: "B2", label: "B2" },
+              { value: "B3", label: "B3" },
+              { value: "B4", label: "B4" },
+              { value: "B5", label: "B5" },
+              { value: "C", label: "C" },
+            ]}
+            style={{ width: 120 }}
+          />
         </Form.Item>
+        <Form.Item
+          label={"Professor"}
+          name={["professor", "id"]}
+          rules={[
+            {
+              required: true,
+            },
+          ]}
+        >
+          <Select {...professorSelectProps} />
+          </Form.Item>
       </Form>
     </Create>
   );

@@ -1,18 +1,50 @@
 {
-
     "professores": [
         {
             "id": 1,
             "nome": "matheus"
+        },
+        {
+            "id": 2,
+            "nome": "joão"
+        },
+        {
+            "id": 3,
+            "nome": "rogério"
         }
     ],
     "producoes": [
         {
             "id": 1,
             "descricao": "qualquer coisa",
+            "professorId": 1,
             "sigla": "APS",
             "evento-periodico": "artigo",
-            "qualis": "B"
+            "qualis": "B1"
+        },
+        {
+            "id": 2,
+            "descricao": "qualquer coisa 2",
+            "professorId": 1,
+            "sigla": "APS",
+            "evento-periodico": "artigo",
+            "qualis": "B2"
+        },
+        {
+            "id": 3,
+            "descricao": "qualquer coisa",
+            "professorId": 2,
+            "sigla": "APS",
+            "evento-periodico": "artigo",
+            "qualis": "B2"
+        },
+        {
+            "id": 4,
+            "descricao": "qualquer coisa",
+            "professorId": 2,
+            "sigla": "APS",
+            "evento-periodico": "artigo",
+            "qualis": "B1"
         }
     ]
 }

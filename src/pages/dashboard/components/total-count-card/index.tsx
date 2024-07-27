@@ -2,9 +2,7 @@ import React, { useEffect, useState, FC, PropsWithChildren, Suspense } from "rea
 import { UserOutlined, ReadOutlined , TeamOutlined} from "@ant-design/icons";
 import type { AreaConfig } from "@ant-design/plots";
 import { Card, Skeleton } from "antd";
-
 import { Text } from "../../../../components/text";
-
 import styles from "./index.module.css";
 
 const Area = React.lazy(() => import("@ant-design/plots/es/components/area"));
@@ -27,7 +25,7 @@ export const DashboardTotalCountCard: React.FC<{
     autoFit: true,
     tooltip: false,
     animation: false,
-    xField: "index",
+    xField: "year",
     yField: "value",
     xAxis: false,
     yAxis: {
@@ -143,7 +141,7 @@ const variants: {
     secondaryColor?: string;
     icon: React.ReactNode;
     title: string;
-    data: { index: string; value: number }[];
+    data: { year: string; value: number }[];
   };
 } = {
   professor: {
@@ -159,13 +157,17 @@ const variants: {
         />
       </IconWrapper>
     ),
-    title: "Número de professores",
+    title: "Número de Professores",
     data: [
-      { index: "1", value: 3500 },
-      { index: "2", value: 2750 },
-      { index: "3", value: 5000 },
-      { index: "4", value: 4250 },
-      { index: "5", value: 5000 },
+      { year: '2024', value: 1 },
+      { year: '2025', value: 2 },
+      { year: '2026', value: 3 },
+      { year: '2027', value: 4 },
+      { year: '2028', value: 5 },
+      { year: '2029', value: 6 },
+      { year: '2030', value: 7 },
+      { year: '2031', value: 8 },
+      { year: '2032', value: 9 },
     ],
   },
   producoes: {
@@ -182,32 +184,17 @@ const variants: {
         />
       </ReadOutlined>
     ),
-    title: "número de Produções",
+    title: "Número de Produções",
     data: [
-      {
-        index: "1",
-        value: 10000,
-      },
-      {
-        index: "2",
-        value: 19500,
-      },
-      {
-        index: "3",
-        value: 13000,
-      },
-      {
-        index: "4",
-        value: 17000,
-      },
-      {
-        index: "5",
-        value: 13000,
-      },
-      {
-        index: "6",
-        value: 20000,
-      },
+      { year: '2024', value: 1 },
+      { year: '2025', value: 2 },
+      { year: '2026', value: 3 },
+      { year: '2027', value: 4 },
+      { year: '2028', value: 5 },
+      { year: '2029', value: 6 },
+      { year: '2030', value: 7 },
+      { year: '2031', value: 8 },
+      { year: '2032', value: 9 },
     ],
   },
 };

@@ -3,7 +3,7 @@ import { useCustom } from "@refinedev/core";
 import { Col, Row } from "antd";
 import  { DashboardTotalCountsQuery } from "../../graphql/types";
 import {
-  DashboardTotalCountCard,
+  DashboardTotalCountCard, 
 } from "./components/total-count-card";
 import { DASHBOARD_TOTAL_COUNTS_QUERY } from "./queries";
 import React, { useEffect, useState, type FC, type PropsWithChildren, Suspense } from "react";
@@ -18,7 +18,7 @@ export const DashboardPage: React.FC = () => {
       try {
         const response = await fetch("/db.json");
         const result = await response.json();
-        const professoresCount = result.professor.length;
+        const professoresCount = result.professores.length;
         const producoesCount = result.producoes.length;
         setData({ professores: professoresCount, producoes: producoesCount });
       } catch (error) {
@@ -49,6 +49,7 @@ export const DashboardPage: React.FC = () => {
           />
         </Col>
       </Row>
+      
     </div>
   );
 };
