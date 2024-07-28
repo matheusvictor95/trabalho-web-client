@@ -6,6 +6,7 @@
   "dependencies": {
     "@ant-design/charts": "^2.1.2",
     "@ant-design/icons": "^5.0.1",
+    "@ant-design/plots": "^2.2.6",
     "@emotion/react": "^11.13.0",
     "@emotion/styled": "^11.13.0",
     "@refinedev/antd": "^5.37.4",

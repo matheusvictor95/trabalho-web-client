@@ -1,13 +1,14 @@
-import React, { useEffect, useState, FC, PropsWithChildren, Suspense } from "react";
+import React, { FC, PropsWithChildren, Suspense } from "react";
 import { UserOutlined, ReadOutlined , TeamOutlined} from "@ant-design/icons";
-import type { AreaConfig } from "@ant-design/plots";
+import  type { Area, AreaConfig } from "@ant-design/plots";
 import { Card, Skeleton } from "antd";
 import { Text } from "../../../../components/text";
 import styles from "./index.module.css";
 
+
 const Area = React.lazy(() => import("@ant-design/plots/es/components/area"));
 
-type Type = "producoes" | "professor";
+type Type = "producoes" | "professores";
 
 export const DashboardTotalCountCard: React.FC<{
   resource: Type;
@@ -52,14 +53,7 @@ export const DashboardTotalCountCard: React.FC<{
     line: {
       color: primaryColor,
     },
-    point: {
-      size: 0, // Isto remove os pontos do gráfico
-      shape: 'circle',
-      style: {
-        fill: 'transparent',
-        stroke: 'transparent',
-      },
-    },
+  
   };
 
   return (
@@ -144,7 +138,7 @@ const variants: {
     data: { year: string; value: number }[];
   };
 } = {
-  professor: {
+  professores: {
     primaryColor: "#1677FF",
     secondaryColor: "#BAE0FF",
     icon: (
@@ -197,5 +191,8 @@ const variants: {
       { year: '2032', value: 9 },
     ],
   },
+
+
+
 };
 

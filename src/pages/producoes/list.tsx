@@ -51,7 +51,7 @@ export const ProducoesList = () => {
               />
               <Table.Column dataIndex="evento-periodico" title={"Evento Periódico"} />
               <Table.Column dataIndex="qualis" title={"Qualis"} />
-              <Table.Column dataIndex="status" title={"Status"} />
+             
               <Table.Column
                   dataIndex={["createdAt"]}
                   title={"Created at"}
